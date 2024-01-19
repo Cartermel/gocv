@@ -11,9 +11,13 @@ extern "C" {
 
 #ifdef __cplusplus
 typedef cv::Ptr<cv::xfeatures2d::SURF>* SURF;
+typedef cv::Ptr<cv::xfeatures2d::BEBLID>* BeblidDescriptorExtractor;
+typedef cv::Ptr<cv::xfeatures2d::TEBLID>* TeblidDescriptorExtractor;
 typedef cv::Ptr<cv::xfeatures2d::BriefDescriptorExtractor>* BriefDescriptorExtractor;
 #else
 typedef void* SURF;
+typedef void* BeblidDescriptorExtractor;
+typedef void* TeblidDescriptorExtractor;
 typedef void* BriefDescriptorExtractor;
 #endif
 
@@ -26,6 +30,14 @@ BriefDescriptorExtractor BriefDescriptorExtractor_Create();
 BriefDescriptorExtractor BriefDescriptorExtractor_CreateWithParams(int bytes, bool useOrientation);
 void BriefDescriptorExtractor_Close(BriefDescriptorExtractor b);
 void BriefDescriptorExtractor_Compute(BriefDescriptorExtractor b, Mat src, struct KeyPoints kp, Mat desc);
+
+BeblidDescriptorExtractor BeblidDescriptorExtractor_Create(float scaleFactor, int size);
+void BeblidDescriptorExtractor_Close(BeblidDescriptorExtractor b);
+void BeblidDescriptorExtractor_Compute(BeblidDescriptorExtractor b, Mat src, struct KeyPoints kp, Mat desc);
+
+TeblidDescriptorExtractor TeblidDescriptorExtractor_Create(float scaleFactor, int size);
+void TeblidDescriptorExtractor_Close(TeblidDescriptorExtractor b);
+void TeblidDescriptorExtractor_Compute(TeblidDescriptorExtractor b, Mat src, struct KeyPoints kp, Mat desc);
 
 #ifdef __cplusplus
 }
